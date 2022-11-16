@@ -57,12 +57,12 @@ public class Students implements Serializable {
 
     @Override
     public String toString() {
-        return "Students{" +
-                "name='" + nameStudent + '\'' +
-                ", surname='" + surname + '\'' +
-                ", indexNumber=" + indexNumber +
-                ", profile='" + profile + '\'' +
-                ", yearStudy=" + yearStudy +
-                '}';
+        return
+                "Name: " + nameStudent  +
+                ", Surname: " + surname +
+                ", IndexNumber: " + indexNumber +
+                ", Profile: " + profile +
+                ", YearStudy: " + yearStudy;
+
     }
 }
