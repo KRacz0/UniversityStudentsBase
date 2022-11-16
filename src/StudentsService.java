@@ -62,7 +62,7 @@ public class StudentsService {
         System.out.println("Enter name: ");
         nameStudent = scanner.next();
         for(Students std:studentsHashSet){
-            if(std.getNameStudent() == nameStudent){
+            if(std.getNameStudent().equals(nameStudent)){
                 System.out.println(std);
                 found = true;
             }
@@ -78,7 +78,7 @@ public class StudentsService {
         System.out.println("Enter Surname: ");
         surname = scanner.next();
         for(Students std:studentsHashSet){
-            if(std.getSurname() == surname){
+            if(std.getSurname().equals(surname)){
                 System.out.println(std);
                 found = true;
             }
@@ -94,7 +94,7 @@ public class StudentsService {
         profile = scanner.next();
         //String profile = scanner.next();
         for(Students std:studentsHashSet){
-            if(std.getProfile() == profile){
+            if(std.getProfile().equals(profile)){
                 System.out.println(std);
                 found = true;
             }

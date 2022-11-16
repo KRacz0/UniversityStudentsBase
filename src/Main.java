@@ -1,15 +1,10 @@
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Scanner;
 
 public class Main{
     public static void main(String[] args) {
-        ArrayList<Students> arrayLists = new ArrayList<Students>();
         Scanner scanner = new Scanner(System.in);
         StudentsService studentsService = new StudentsService();
-        File file = new File("Students.txt");
+
 
 
         int choice;
@@ -32,9 +27,9 @@ public class Main{
                     break;
 
                 case 3:
-                    //studentsService.searchStudents();
-                    //studentsService.searchStudentsSurname();
-                    //studentsService.searchStudentsId();
+                    studentsService.searchStudents();
+                    studentsService.searchStudentsSurname();
+                    studentsService.searchStudentsId();
                     studentsService.searchStudentsProfile();
                     break;
 
