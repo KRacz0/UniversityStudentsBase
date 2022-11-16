@@ -1,4 +1,9 @@
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.ObjectStreamConstants;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class StudentsService {
@@ -25,9 +30,10 @@ public class StudentsService {
         studentsHashSet.add(student3);
         studentsHashSet.add(student4);
     }
-
+    
     //add Students
     public void addStudents(){
+        System.out.println("<---------- Add a new student ---------->");
         System.out.println("Enter Name: ");
         nameStudent = scanner.next();
 
@@ -52,6 +58,7 @@ public class StudentsService {
 
     //view all students
     public void viewAllStudents(){
+        System.out.println("<---------- List of students ---------->");
         for(Students std:studentsHashSet) {
             System.out.println(std);
         }
@@ -61,6 +68,7 @@ public class StudentsService {
     public void searchStudents(){
         System.out.println("Enter name: ");
         nameStudent = scanner.next();
+        System.out.println("<---------- List of students with name " + nameStudent + "  ---------->");
         for(Students std:studentsHashSet){
             if(std.getNameStudent().equals(nameStudent)){
                 System.out.println(std);
@@ -77,6 +85,7 @@ public class StudentsService {
     public void searchStudentsSurname(){
         System.out.println("Enter Surname: ");
         surname = scanner.next();
+        System.out.println("<---------- List of students with surname " + surname + " ---------->");
         for(Students std:studentsHashSet){
             if(std.getSurname().equals(surname)){
                 System.out.println(std);
@@ -92,7 +101,7 @@ public class StudentsService {
     public void searchStudentsProfile(){
         System.out.println("Enter profile: ");
         profile = scanner.next();
-        //String profile = scanner.next();
+        System.out.println("<---------- List of students with profile " + profile + " ---------->");
         for(Students std:studentsHashSet){
             if(std.getProfile().equals(profile)){
                 System.out.println(std);
@@ -108,6 +117,7 @@ public class StudentsService {
     public void searchStudentsId(){
         System.out.println("Enter index: ");
         indexNumber = scanner.nextInt();
+        System.out.println("<---------- List of students with index" + indexNumber + " ---------->");
         for(Students std:studentsHashSet){
             if(std.getIndexNumber()==indexNumber){
                 System.out.println(std);
