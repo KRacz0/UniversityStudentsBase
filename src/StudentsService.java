@@ -23,14 +23,30 @@ public class StudentsService {
     String profile;
     int yearStudy;
 
-    public StudentsService(){
+    public StudentsService() throws IOException {
 
         studentsHashSet.add(student1);
         studentsHashSet.add(student2);
         studentsHashSet.add(student3);
         studentsHashSet.add(student4);
+
+        ObjectOutputStream oos = null;
+        FileOutputStream fos = null;
+        try{
+            fos = new FileOutputStream("studentsData.txt");
+            oos = new ObjectOutputStream(fos);
+            oos.writeObject(studentsHashSet);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            if(oos != null){
+                oos.close();
+            }
+        }
     }
-    
+
+
+
     //add Students
     public void addStudents(){
         System.out.println("<---------- Add a new student ---------->");
