@@ -39,7 +39,7 @@ public class Main{
                     } else if (choiceSearch == 4){
                         studentsService.searchStudentsProfile();
                     } else {
-                        System.out.println("Ni ma takiego wyboru");
+                        System.out.println("There is no such choice");
                     }
                     break;
 
