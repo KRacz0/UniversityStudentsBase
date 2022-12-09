@@ -1,7 +1,4 @@
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.ObjectStreamConstants;
+import java.io.*;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Scanner;
@@ -29,21 +26,8 @@ public class StudentsService {
         studentsHashSet.add(student2);
         studentsHashSet.add(student3);
         studentsHashSet.add(student4);
-
-        ObjectOutputStream oos = null;
-        FileOutputStream fos = null;
-        try{
-            fos = new FileOutputStream("studentsData.txt");
-            oos = new ObjectOutputStream(fos);
-            oos.writeObject(studentsHashSet);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        } finally {
-            if(oos != null){
-                oos.close();
-            }
-        }
     }
+
 
 
 
@@ -66,9 +50,7 @@ public class StudentsService {
         yearStudy = scanner.nextInt();
 
         Students std = new Students(nameStudent, surname, indexNumber, profile, yearStudy);
-
         studentsHashSet.add(std);
-
         System.out.println("Successfully added a new student!" + std);
     }
 
@@ -148,7 +130,7 @@ public class StudentsService {
     //update the students
     public void updateStudents(){
         System.out.println("Enter indexNumber:  ");
-        indexNumber=scanner.nextInt();
+        indexNumber = scanner.nextInt();
         for(Students std:studentsHashSet){
             if(std.getIndexNumber()==indexNumber) {
                 System.out.println("Enter new Name: ");

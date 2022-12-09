@@ -34,7 +34,7 @@ public class Main{
                         studentsService.searchStudents();
                     } else if (choiceSearch == 2){
                         studentsService.searchStudentsSurname();
-                    } else if (choiceSearch == 3) {
+                    } else if (choiceSearch == 3){
                         studentsService.searchStudentsId();
                     } else if (choiceSearch == 4){
                         studentsService.searchStudentsProfile();
