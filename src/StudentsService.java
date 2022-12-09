@@ -199,4 +199,12 @@ public class StudentsService {
         }
     }
 
+    public void caseOptions(){
+        System.out.println("Select search options:");
+        System.out.println("1. Search Students by Name ");
+        System.out.println("2. Search Students by Surname");
+        System.out.println("3. Search Students by Index");
+        System.out.println("4. Search Students by Profile");
+    }
+
 }

@@ -28,10 +28,19 @@ public class Main{
                     break;
 
                 case 3:
-                    studentsService.searchStudents();
-                    studentsService.searchStudentsSurname();
-                    studentsService.searchStudentsId();
-                    studentsService.searchStudentsProfile();
+                    studentsService.caseOptions();
+                    int choiceSearch = scanner.nextInt();
+                    if(choiceSearch == 1){
+                        studentsService.searchStudents();
+                    } else if (choiceSearch == 2){
+                        studentsService.searchStudentsSurname();
+                    } else if (choiceSearch == 3) {
+                        studentsService.searchStudentsId();
+                    } else if (choiceSearch == 4){
+                        studentsService.searchStudentsProfile();
+                    } else {
+                        System.out.println("Ni ma takiego wyboru");
+                    }
                     break;
 
                 case 4:
