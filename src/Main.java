@@ -1,12 +1,14 @@
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 public class Main{
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+
         Scanner scanner = new Scanner(System.in);
         StudentsService studentsService = new StudentsService();
-
-
+        studentsService.deserialization();
 
         int choice;
         do {

@@ -1,13 +1,13 @@
 import java.io.Serializable;
 
-public class Students implements Serializable {
+public class Student implements Serializable {
     private String nameStudent;
     private String surname;
     private int indexNumber;
     private String profile;
     private int yearStudy;
 
-    public Students(String nameStudent, String surname, int indexNumber, String profile, int yearStudy) {
+    public Student(String nameStudent, String surname, int indexNumber, String profile, int yearStudy) {
         this.nameStudent = nameStudent;
         this.surname = surname;
         this.indexNumber = indexNumber;

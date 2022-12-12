@@ -1,16 +1,15 @@
 import java.io.*;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class StudentsService {
 
-    HashSet<Students> studentsHashSet = new HashSet<Students>();
+    HashSet<Student> studentHashSet = new HashSet<Student>();
 
-    Students student1 = new Students("Krystian", "Raczyński", 42757, "Informatyk", 1);
-    Students student2 = new Students("Marcin", "Domagała", 42321, "Informatyk", 1);
-    Students student3 = new Students("Fabian", "Fabiańczyk", 42315, "Elektryk", 2);
-    Students student4 = new Students("Marcin", "Marcinkowski", 42891, "Logistyk", 3);
+    Student student1 = new Student("Krystian", "Raczyński", 42757, "Informatyk", 1);
+    Student student2 = new Student("Marcin", "Domagała", 42321, "Informatyk", 1);
+    Student student3 = new Student("Fabian", "Fabiańczyk", 42315, "Elektryk", 2);
+    Student student4 = new Student("Marcin", "Marcinkowski", 42891, "Logistyk", 3);
 
     Scanner scanner = new Scanner(System.in);
     boolean found= false;
@@ -22,11 +21,13 @@ public class StudentsService {
 
     public StudentsService() throws IOException {
 
-        studentsHashSet.add(student1);
-        studentsHashSet.add(student2);
-        studentsHashSet.add(student3);
-        studentsHashSet.add(student4);
+        studentHashSet.add(student1);
+        studentHashSet.add(student2);
+        studentHashSet.add(student3);
+        studentHashSet.add(student4);
+
     }
+
 
 
 
@@ -49,15 +50,15 @@ public class StudentsService {
         System.out.println("Enter YearStudy: ");
         yearStudy = scanner.nextInt();
 
-        Students std = new Students(nameStudent, surname, indexNumber, profile, yearStudy);
-        studentsHashSet.add(std);
+        Student std = new Student(nameStudent, surname, indexNumber, profile, yearStudy);
+        studentHashSet.add(std);
         System.out.println("Successfully added a new student!" + std);
     }
 
     //view all students
     public void viewAllStudents(){
         System.out.println("<---------- List of students ---------->");
-        for(Students std:studentsHashSet) {
+        for(Student std: studentHashSet) {
             System.out.println(std);
         }
     }
@@ -67,7 +68,7 @@ public class StudentsService {
         System.out.println("Enter name: ");
         nameStudent = scanner.next();
         System.out.println("<---------- List of students with name " + nameStudent + "  ---------->");
-        for(Students std:studentsHashSet){
+        for(Student std: studentHashSet){
             if(std.getNameStudent().equals(nameStudent)){
                 System.out.println(std);
                 found = true;
@@ -84,7 +85,7 @@ public class StudentsService {
         System.out.println("Enter Surname: ");
         surname = scanner.next();
         System.out.println("<---------- List of students with surname " + surname + " ---------->");
-        for(Students std:studentsHashSet){
+        for(Student std: studentHashSet){
             if(std.getSurname().equals(surname)){
                 System.out.println(std);
                 found = true;
@@ -100,7 +101,7 @@ public class StudentsService {
         System.out.println("Enter profile: ");
         profile = scanner.next();
         System.out.println("<---------- List of students with profile " + profile + " ---------->");
-        for(Students std:studentsHashSet){
+        for(Student std: studentHashSet){
             if(std.getProfile().equals(profile)){
                 System.out.println(std);
                 found = true;
@@ -116,7 +117,7 @@ public class StudentsService {
         System.out.println("Enter index: ");
         indexNumber = scanner.nextInt();
         System.out.println("<---------- List of students with index" + indexNumber + " ---------->");
-        for(Students std:studentsHashSet){
+        for(Student std: studentHashSet){
             if(std.getIndexNumber()==indexNumber){
                 System.out.println(std);
                 found = true;
@@ -131,7 +132,7 @@ public class StudentsService {
     public void updateStudents(){
         System.out.println("Enter indexNumber:  ");
         indexNumber = scanner.nextInt();
-        for(Students std:studentsHashSet){
+        for(Student std: studentHashSet){
             if(std.getIndexNumber()==indexNumber) {
                 System.out.println("Enter new Name: ");
                 nameStudent=scanner.next();
@@ -166,8 +167,8 @@ public class StudentsService {
         System.out.println("Enter indexNumber: ");
         indexNumber = scanner.nextInt();
         boolean found = false;
-        Students stdDelete = null;
-        for (Students std:studentsHashSet) {
+        Student stdDelete = null;
+        for (Student std: studentHashSet) {
             if(std.getIndexNumber()==indexNumber) {
                 stdDelete=std;
                 found = true;
@@ -176,7 +177,7 @@ public class StudentsService {
         if (!found) {
             System.out.println("No student index found " + indexNumber);
         } else {
-            studentsHashSet.remove(stdDelete);
+            studentHashSet.remove(stdDelete);
             System.out.println("The student with index " + indexNumber + " has been deleted!");
         }
     }
@@ -187,6 +188,21 @@ public class StudentsService {
         System.out.println("2. Search Students by Surname");
         System.out.println("3. Search Students by Index");
         System.out.println("4. Search Students by Profile");
+    }
+
+
+    public void serialization() throws IOException {
+        FileOutputStream fos = new FileOutputStream("students.txt");
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(this.studentHashSet);
+        System.out.println("zserializowano");
+    }
+
+    public void deserialization() throws IOException, ClassNotFoundException {
+        FileInputStream fis = new FileInputStream("students.txt");
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        this.studentHashSet = (HashSet<Student>) ois.readObject();
+        System.out.println("zdeserializowano");
     }
 
 }
