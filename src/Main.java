@@ -8,7 +8,6 @@ public class Main{
 
         Scanner scanner = new Scanner(System.in);
         StudentsService studentsService = new StudentsService();
-        studentsService.deserialization();
 
         int choice;
         do {

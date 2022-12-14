@@ -19,14 +19,42 @@ public class StudentsService {
     String profile;
     int yearStudy;
 
-    public StudentsService() throws IOException {
+
+    public StudentsService() {
 
         studentHashSet.add(student1);
         studentHashSet.add(student2);
         studentHashSet.add(student3);
         studentHashSet.add(student4);
 
+
+        //Serializacja listy komputerów do pliku .db
+        try{
+            FileOutputStream fos = new FileOutputStream("UniversityStudentBase.db");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(studentHashSet);
+            oos.close();
+            fos.close();
+        }catch(IOException ioe){
+            ioe.printStackTrace();
+        }
+
+        //Deserializacja listy komputerów z pliku .db
+        try {
+            FileInputStream fis = new FileInputStream("UniversityStudentBase.db");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            studentHashSet = (HashSet<Student>) ois.readObject();
+            ois.close();
+            fis.close();
+        }catch(IOException ioe){
+            ioe.printStackTrace();
+        }catch(ClassNotFoundException c){
+            System.out.println("Class not found");
+            c.printStackTrace();
+        }
     }
+
+
 
 
 
@@ -189,20 +217,4 @@ public class StudentsService {
         System.out.println("3. Search Students by Index");
         System.out.println("4. Search Students by Profile");
     }
-
-
-    public void serialization() throws IOException {
-        FileOutputStream fos = new FileOutputStream("students.txt");
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
-        oos.writeObject(this.studentHashSet);
-        System.out.println("zserializowano");
-    }
-
-    public void deserialization() throws IOException, ClassNotFoundException {
-        FileInputStream fis = new FileInputStream("students.txt");
-        ObjectInputStream ois = new ObjectInputStream(fis);
-        this.studentHashSet = (HashSet<Student>) ois.readObject();
-        System.out.println("zdeserializowano");
-    }
-
 }
