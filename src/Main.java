@@ -1,10 +1,7 @@
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 public class Main{
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
+    public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
         StudentsService studentsService = new StudentsService();
@@ -51,6 +48,9 @@ public class Main{
                 case 5:
                     studentsService.updateStudents();
                     break;
+
+                case 6:
+                    return;
             }
         } while (choice != 0);
     }
